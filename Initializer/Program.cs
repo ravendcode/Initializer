@@ -18,7 +18,7 @@ namespace Initializer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(new JsonConfigReader(), new AudioService()));
+            Application.Run(new PresetsViewModel(new JsonConfigReader(), new AudioService()));
         }
     }
 }

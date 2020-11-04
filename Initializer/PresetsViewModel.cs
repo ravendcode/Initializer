@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace Initializer
 {
-    public partial class Form1 : Form
+    public partial class PresetsViewModel : Form
     {
         private IConfigReader _configReader;
         private IAudioService _audioService;
@@ -25,7 +25,7 @@ namespace Initializer
         private List<Preset> _presets = new List<Preset>();
         private string _assetsDir = "";
 
-        public Form1(IConfigReader configReader, IAudioService audioService)
+        public PresetsViewModel(IConfigReader configReader, IAudioService audioService)
         {
             InitializeComponent();
 
