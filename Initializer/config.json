@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Unity 2D",
+        "files": [
+            {
+                "dirname": "Animations",
+                "isSelected": true
+            },
+            {
+                "dirname": "Materials",
+                "isSelected": true
+            },
+            {
+                "dirname": "Prefabs",
+                "isSelected": true
+            },
+            {
+                "dirname": "Scripts",
+                "isSelected": true
+            },
+            {
+                "dirname": "Sprites",
+                "isSelected": true
+            },
+            {
+                "dirname": "Textures",
+                "isSelected": false
+            },
+            {
+                "dirname": "csc.rsp",
+                "isSelected": true
+            }
+        ]
+    },
+    {
+        "name": "Unity 3D",
+        "files": [
+            {
+                "dirname": "Animations",
+                "isSelected": true
+            },
+            {
+                "dirname": "Materials",
+                "isSelected": true
+            },
+            {
+                "dirname": "Prefabs",
+                "isSelected": true
+            },
+            {
+                "dirname": "Scripts",
+                "isSelected": true
+            },
+            {
+                "dirname": "Sprites",
+                "isSelected": false
+            },
+            {
+                "dirname": "Textures",
+                "isSelected": true
+            },
+            {
+                "dirname": "csc.rsp",
+                "isSelected": true
+            }
+        ]
+    }
+]
