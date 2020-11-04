@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.textBoxDirPath = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialogDirPath = new System.Windows.Forms.FolderBrowserDialog();
             this.button2 = new System.Windows.Forms.Button();
             this.checkedListPresetFiles = new System.Windows.Forms.CheckedListBox();
             this.listPresets = new System.Windows.Forms.ListBox();
@@ -49,15 +49,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBoxDirPath
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(51, 107);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(739, 29);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBoxDirPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxDirPath.Location = new System.Drawing.Point(51, 107);
+            this.textBoxDirPath.Name = "textBoxDirPath";
+            this.textBoxDirPath.ReadOnly = true;
+            this.textBoxDirPath.Size = new System.Drawing.Size(739, 29);
+            this.textBoxDirPath.TabIndex = 2;
+            this.textBoxDirPath.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
@@ -111,7 +111,7 @@
             this.Controls.Add(this.listPresets);
             this.Controls.Add(this.checkedListPresetFiles);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxDirPath);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -126,8 +126,8 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.TextBox textBoxDirPath;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogDirPath;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckedListBox checkedListPresetFiles;
         private System.Windows.Forms.ListBox listPresets;

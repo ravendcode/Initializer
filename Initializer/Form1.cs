@@ -112,9 +112,9 @@ namespace Initializer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            _assetsDir = folderBrowserDialog1.SelectedPath;
-            textBox1.Text = _assetsDir;
+            folderBrowserDialogDirPath.ShowDialog();
+            _assetsDir = folderBrowserDialogDirPath.SelectedPath;
+            textBoxDirPath.Text = _assetsDir;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
