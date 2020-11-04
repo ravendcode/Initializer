@@ -46,12 +46,12 @@ namespace Initializer
             catch (ConfigFileNotFoundException e)
             {
                 MessageBox.Show(e.Message);
-                Environment.Exit(0);
+                Environment.Exit(1);
             }
-            catch (ConfigSerializationException e)
+            catch (ConfigFileSerializationException e)
             {
                 MessageBox.Show(e.Message);
-                Environment.Exit(0);
+                Environment.Exit(1);
             }
         }
 

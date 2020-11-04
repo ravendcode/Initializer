@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Errors\ConfigFileNotFoundException.cs" />
-    <Compile Include="Errors\ConfigSerializationException.cs" />
+    <Compile Include="Errors\ConfigFileSerializationException.cs" />
     <Compile Include="Services\AudioService.cs" />
     <Compile Include="Services\IAudioService.cs" />
     <Compile Include="PresetsViewModel.cs">

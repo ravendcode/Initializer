@@ -24,13 +24,13 @@ namespace Initializer.Data
                     return JsonConvert.DeserializeObject<IEnumerable<Preset>>(json);
                 }
             }
-            catch (FileNotFoundException e)
+            catch (FileNotFoundException)
             {
                 throw new ConfigFileNotFoundException($"Нету файла {_fileName}");
             }
-            catch (JsonException e)
+            catch (JsonException)
             {
-                throw new ConfigSerializationException($"Невалидный {_fileName}");
+                throw new ConfigFileSerializationException($"Невалидный {_fileName}");
             }
         }
     }
