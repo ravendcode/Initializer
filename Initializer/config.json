@@ -27,7 +27,7 @@
                 "isSelected": false
             },
             {
-                "dirname": "csc.rsp",
+                "dirname": "ScriptTemplates",
                 "isSelected": true
             }
         ]
@@ -60,7 +60,7 @@
                 "isSelected": true
             },
             {
-                "dirname": "csc.rsp",
+                "dirname": "ScriptTemplates",
                 "isSelected": true
             }
         ]

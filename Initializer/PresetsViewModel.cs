@@ -86,15 +86,46 @@ namespace Initializer
 
                 foreach (string item in checkedListPresetFiles.CheckedItems)
                 {
-                    if (item != "csc.rsp")
+                    //if (item != "csc.rsp")
+                    //{
+                    //    dirInfo.CreateSubdirectory(item);
+                    //}
+                    //else
+                    //{
+                    //    using (FileStream fs = File.Create(_assetsDir + "\\csc.rsp"))
+                    //    {
+                    //        byte[] info = new UTF8Encoding(true).GetBytes("-nowarn:0649\n");
+                    //        fs.Write(info, 0, info.Length);
+                    //    }
+                    //}
+
+                    dirInfo.CreateSubdirectory(item);
+
+                    if (item == "ScriptTemplates")
                     {
-                        dirInfo.CreateSubdirectory(item);
-                    }
-                    else
-                    {
-                        using (FileStream fs = File.Create(_assetsDir + "\\csc.rsp"))
+                        using (FileStream fs = File.Create(_assetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt"))
                         {
-                            byte[] info = new UTF8Encoding(true).GetBytes("-nowarn:0649\n");
+                            //byte[] info = new UTF8Encoding(true).GetBytes("-nowarn:0649\n");
+                            byte[] info = new UTF8Encoding(true).GetBytes(
+@"using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+    #ROOTNAMESPACEBEGIN#
+public class #SCRIPTNAME# : MonoBehaviour
+{
+    private void Start()
+    {
+        #NOTRIM#
+    }
+
+    private void Update()
+    {
+        #NOTRIM#
+    }
+}
+#ROOTNAMESPACEEND#
+");
                             fs.Write(info, 0, info.Length);
                         }
                     }
