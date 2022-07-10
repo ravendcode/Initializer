@@ -1,4 +1,3 @@
 # Initializer
-## Folder initializer for UE and Unity
+## File initializer for UE and Unity
 ### App C# Windows Forms
-
