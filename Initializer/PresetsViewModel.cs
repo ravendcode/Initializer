@@ -23,6 +23,8 @@ namespace Initializer
         private IAudioService _audioService;
 
         private List<Preset> _presets = new List<Preset>();
+        private string _projectDir = "";
+        private string _presetName = "";
         private string _assetsDir = "";
 
         public PresetsViewModel(IConfigReader configReader, IAudioService audioService)
@@ -68,6 +70,7 @@ namespace Initializer
         private void LoadCheckedListPresetFiles(int selectedPreset)
         {
             checkedListPresetFiles.Items.Clear();
+            _presetName = _presets[selectedPreset].Name;
             for (int i = 0; i < _presets[selectedPreset].Files.Count; i++)
             {
                 checkedListPresetFiles.Items.Add(_presets[selectedPreset].Files[i].Dirname);
@@ -80,55 +83,74 @@ namespace Initializer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (_assetsDir != "")
+            if (_projectDir != "")
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(_assetsDir);
 
                 foreach (string item in checkedListPresetFiles.CheckedItems)
                 {
-                    //if (item != "csc.rsp")
-                    //{
-                    //    dirInfo.CreateSubdirectory(item);
-                    //}
-                    //else
-                    //{
-                    //    using (FileStream fs = File.Create(_assetsDir + "\\csc.rsp"))
-                    //    {
-                    //        byte[] info = new UTF8Encoding(true).GetBytes("-nowarn:0649\n");
-                    //        fs.Write(info, 0, info.Length);
-                    //    }
-                    //}
+                    if (item == ".editorconfig")
+                    {
+                        string editorconfig = @"resources\files\.editorconfig";
+                        string sourceFile = Path.Combine(Environment.CurrentDirectory, editorconfig);
+                        string destinationFile = _projectDir + "\\.editorconfig";
+                        try
+                        {
+                            File.Copy(sourceFile, destinationFile, true);
+                        }
+                        catch (IOException copyError)
+                        {
+                            throw new CopyFileFromResourceException(copyError.Message);
+                        }
+                        continue;
+                    }
 
                     dirInfo.CreateSubdirectory(item);
 
                     if (item == "ScriptTemplates")
                     {
-                        using (FileStream fs = File.Create(_assetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt"))
+                        string newBehaviourScript = @"resources\files\81-C# Script-NewBehaviourScript.cs.txt";
+                        string sourceFile = Path.Combine(Environment.CurrentDirectory, newBehaviourScript);
+                        string destinationFile = _assetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt";
+                        try
                         {
-                            //byte[] info = new UTF8Encoding(true).GetBytes("-nowarn:0649\n");
-                            byte[] info = new UTF8Encoding(true).GetBytes(
-@"using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-    #ROOTNAMESPACEBEGIN#
-public class #SCRIPTNAME# : MonoBehaviour
-{
-    private void Start()
-    {
-        #NOTRIM#
-    }
-
-    private void Update()
-    {
-        #NOTRIM#
-    }
-}
-#ROOTNAMESPACEEND#
-");
-                            fs.Write(info, 0, info.Length);
+                            File.Copy(sourceFile, destinationFile, true);
                         }
+                        catch (IOException copyError)
+                        {
+                            throw new CopyFileFromResourceException(copyError.Message);
+                        }
+                        continue;
                     }
+
+                    //                    if (item == "ScriptTemplates")
+                    //                    {
+                    //                        using (FileStream fs = File.Create(_assetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt"))
+                    //                        {
+                    //                            //byte[] info = new UTF8Encoding(true).GetBytes("-nowarn:0649\n");
+                    //                            byte[] info = new UTF8Encoding(true).GetBytes(
+                    //@"using System.Collections;
+                    //using System.Collections.Generic;
+                    //using UnityEngine;
+
+                    //    #ROOTNAMESPACEBEGIN#
+                    //public class #SCRIPTNAME# : MonoBehaviour
+                    //{
+                    //    private void Start()
+                    //    {
+                    //        #NOTRIM#
+                    //    }
+
+                    //    private void Update()
+                    //    {
+                    //        #NOTRIM#
+                    //    }
+                    //}
+                    //#ROOTNAMESPACEEND#
+                    //");
+                    //                            fs.Write(info, 0, info.Length);
+                    //                        }
+                    //                    }
                 }
 
                 _audioService.PlaySuccess();
@@ -144,8 +166,9 @@ public class #SCRIPTNAME# : MonoBehaviour
         private void button2_Click(object sender, EventArgs e)
         {
             folderBrowserDialogDirPath.ShowDialog();
-            _assetsDir = folderBrowserDialogDirPath.SelectedPath;
-            textBoxDirPath.Text = _assetsDir;
+            _projectDir = folderBrowserDialogDirPath.SelectedPath;
+            _assetsDir = _projectDir + "\\" + _presets[0].AssetsDir;
+            textBoxDirPath.Text = _projectDir;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -165,6 +188,7 @@ public class #SCRIPTNAME# : MonoBehaviour
 
         private void button3_Click(object sender, EventArgs e)
         {
+            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
             LoadCheckedListPresetFiles(listPresets.SelectedIndex);
         }
     }

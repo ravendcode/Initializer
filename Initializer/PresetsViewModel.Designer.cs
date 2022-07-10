@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PresetsViewModel));
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxDirPath = new System.Windows.Forms.TextBox();
             this.folderBrowserDialogDirPath = new System.Windows.Forms.FolderBrowserDialog();
@@ -72,7 +71,7 @@
             // 
             // checkedListPresetFiles
             // 
-            this.checkedListPresetFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkedListPresetFiles.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkedListPresetFiles.FormattingEnabled = true;
             this.checkedListPresetFiles.Location = new System.Drawing.Point(458, 200);
             this.checkedListPresetFiles.Name = "checkedListPresetFiles";
@@ -102,7 +101,7 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // Form1
+            // PresetsViewModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,8 +113,7 @@
             this.Controls.Add(this.textBoxDirPath);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "PresetsViewModel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Initializer";
             this.ResumeLayout(false);
