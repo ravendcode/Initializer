@@ -24,7 +24,7 @@ namespace Initializer
 
         private List<Preset> _presets = new List<Preset>();
         private string _projectDir = "";
-        private string _presetName = "";
+        //private string _presetName = "";
         private string _assetsDir = "";
 
         public PresetsViewModel(IConfigReader configReader, IAudioService audioService)
@@ -70,7 +70,6 @@ namespace Initializer
         private void LoadCheckedListPresetFiles(int selectedPreset)
         {
             checkedListPresetFiles.Items.Clear();
-            _presetName = _presets[selectedPreset].Name;
             for (int i = 0; i < _presets[selectedPreset].Files.Count; i++)
             {
                 checkedListPresetFiles.Items.Add(_presets[selectedPreset].Files[i].Dirname);
@@ -167,7 +166,7 @@ namespace Initializer
         {
             folderBrowserDialogDirPath.ShowDialog();
             _projectDir = folderBrowserDialogDirPath.SelectedPath;
-            _assetsDir = _projectDir + "\\" + _presets[0].AssetsDir;
+            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
             textBoxDirPath.Text = _projectDir;
         }
 
