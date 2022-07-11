@@ -28,6 +28,10 @@
                 "isSelected": true
             },
             {
+                "dirname": "Sprites",
+                "isSelected": false
+            },
+            {
                 "dirname": "Textures",
                 "isSelected": true
             },
@@ -52,6 +56,10 @@
             {
                 "dirname": "Materials",
                 "isSelected": true
+            },
+            {
+                "dirname": "Meshes",
+                "isSelected": false
             },
             {
                 "dirname": "Prefabs",
