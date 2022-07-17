@@ -4,15 +4,15 @@
         "assetsDir": "Content",
         "files": [
             {
-                "dirname": "Animations",
-                "isSelected": true
-            },
-            {
                 "dirname": "Audio",
                 "isSelected": true
             },
             {
                 "dirname": "Blueprints",
+                "isSelected": true
+            },
+            {
+                "dirname": "Characters",
                 "isSelected": true
             },
             {
