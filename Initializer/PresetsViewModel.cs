@@ -46,7 +46,7 @@ namespace Initializer
             LoadPresets();
             LoadListPresets();
             LoadCheckedListPresetFiles(0);
-            openInExplorerButton.Enabled = false;
+            openInExplorerBtn.Enabled = false;
             createBtn.Enabled = false;
         }
 
@@ -120,10 +120,10 @@ namespace Initializer
         {
             folderBrowserDialogDirPath.ShowDialog();
             _projectDir = folderBrowserDialogDirPath.SelectedPath;
-            openInExplorerButton.Enabled = true;
-            createBtn.Enabled = true;
             _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
             textBoxDirPath.Text = _projectDir;
+            openInExplorerBtn.Enabled = true;
+            createBtn.Enabled = true;
         }
 
         private void listPresetsBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,11 +207,6 @@ namespace Initializer
                 _audioService.PlaySuccess();
                 MessageBox.Show(LangService.Translate("success"));
             }
-            else
-            {
-                _audioService.PlayError();
-                MessageBox.Show(LangService.Translate("choose_folder"));
-            }
         }
 
         private void langComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -219,7 +214,7 @@ namespace Initializer
             LangService.Lang = langComboBox.SelectedItem.ToString();
             selectFolderBtn.Text = LangService.Translate("select_folder_btn");
             createBtn.Text = LangService.Translate("create_btn");
-            openInExplorerButton.Text = LangService.Translate("open_in_explorer");
+            openInExplorerBtn.Text = LangService.Translate("open_in_explorer");
             if (_firstLoadConfig)
             {
                 _firstLoadConfig = false;
@@ -231,17 +226,11 @@ namespace Initializer
             }
         }
 
-        private void openInExplorerButton_Click(object sender, EventArgs e)
+        private void openInExplorerBtn_Click(object sender, EventArgs e)
         {
             if (_projectDir != "")
             {
                 Process.Start(_projectDir);
-            }
-            else
-            {
-                openInExplorerButton.Enabled = false;
-                _audioService.PlayError();
-                MessageBox.Show(LangService.Translate("choose_folder"));
             }
         }
     }

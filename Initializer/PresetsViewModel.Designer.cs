@@ -35,7 +35,7 @@
             this.checkedListPresetFiles = new System.Windows.Forms.CheckedListBox();
             this.listPresets = new System.Windows.Forms.ListBox();
             this.langComboBox = new System.Windows.Forms.ComboBox();
-            this.openInExplorerButton = new System.Windows.Forms.Button();
+            this.openInExplorerBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // createBtn
@@ -102,23 +102,23 @@
             this.langComboBox.TabIndex = 8;
             this.langComboBox.SelectedIndexChanged += new System.EventHandler(this.langComboBox_SelectedIndexChanged);
             // 
-            // openInExplorerButton
+            // openInExplorerBtn
             // 
-            this.openInExplorerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.openInExplorerButton.Location = new System.Drawing.Point(51, 161);
-            this.openInExplorerButton.Name = "openInExplorerButton";
-            this.openInExplorerButton.Size = new System.Drawing.Size(246, 61);
-            this.openInExplorerButton.TabIndex = 9;
-            this.openInExplorerButton.Text = "Открыть в проводнике";
-            this.openInExplorerButton.UseVisualStyleBackColor = true;
-            this.openInExplorerButton.Click += new System.EventHandler(this.openInExplorerButton_Click);
+            this.openInExplorerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openInExplorerBtn.Location = new System.Drawing.Point(51, 161);
+            this.openInExplorerBtn.Name = "openInExplorerBtn";
+            this.openInExplorerBtn.Size = new System.Drawing.Size(246, 61);
+            this.openInExplorerBtn.TabIndex = 9;
+            this.openInExplorerBtn.Text = "Открыть в проводнике";
+            this.openInExplorerBtn.UseVisualStyleBackColor = true;
+            this.openInExplorerBtn.Click += new System.EventHandler(this.openInExplorerBtn_Click);
             // 
             // PresetsViewModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 646);
-            this.Controls.Add(this.openInExplorerButton);
+            this.Controls.Add(this.openInExplorerBtn);
             this.Controls.Add(this.langComboBox);
             this.Controls.Add(this.listPresets);
             this.Controls.Add(this.checkedListPresetFiles);
@@ -143,7 +143,7 @@
         private System.Windows.Forms.CheckedListBox checkedListPresetFiles;
         private System.Windows.Forms.ListBox listPresets;
         private System.Windows.Forms.ComboBox langComboBox;
-        private System.Windows.Forms.Button openInExplorerButton;
+        private System.Windows.Forms.Button openInExplorerBtn;
     }
 }
 
