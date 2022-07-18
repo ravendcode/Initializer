@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -19,42 +20,67 @@ namespace Initializer
 {
     public partial class PresetsViewModel : Form
     {
-        private IConfigReader _configReader;
-        private IAudioService _audioService;
+        private readonly IConfigReaderWriter _configReaderWriter;
+        private readonly IAudioService _audioService;
 
+        private Config _config;
         private List<Preset> _presets = new List<Preset>();
+
         private string _projectDir = "";
+
         //private string _presetName = "";
         private string _assetsDir = "";
 
-        public PresetsViewModel(IConfigReader configReader, IAudioService audioService)
+        private bool _firstLoadConfig = true;
+
+        public PresetsViewModel(IConfigReaderWriter configReaderWriter, IAudioService audioService)
         {
             InitializeComponent();
 
-            _configReader = configReader;
+            _configReaderWriter = configReaderWriter;
             _audioService = audioService;
 
+            LoadLanguages();
+
+            LoadConfig();
             LoadPresets();
             LoadListPresets();
             LoadCheckedListPresetFiles(0);
+            openInExplorerButton.Enabled = false;
+            createBtn.Enabled = false;
         }
 
-        private void LoadPresets()
+        private void LoadLanguages()
+        {
+            langComboBox.Items.Add("Ru");
+            langComboBox.Items.Add("En");
+            langComboBox.SelectedIndex = 1;
+        }
+
+        private void LoadConfig()
         {
             try
             {
-                _presets = _configReader.GetPresets().ToList();
+                _config = _configReaderWriter.GetConfig();
+                langComboBox.SelectedIndex = _config.Lang.ToLower() == "ru" ? 0 : 1;
             }
             catch (ConfigFileNotFoundException e)
             {
+                _audioService.PlayError();
                 MessageBox.Show(e.Message);
                 Environment.Exit(1);
             }
             catch (ConfigFileSerializationException e)
             {
+                _audioService.PlayError();
                 MessageBox.Show(e.Message);
                 Environment.Exit(1);
             }
+        }
+
+        private void LoadPresets()
+        {
+            _presets = _config.Presets.ToList();
         }
 
         private void LoadListPresets()
@@ -80,7 +106,33 @@ namespace Initializer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selectFolderBtn_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialogDirPath.ShowDialog();
+            _projectDir = folderBrowserDialogDirPath.SelectedPath;
+            openInExplorerButton.Enabled = true;
+            createBtn.Enabled = true;
+            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+            textBoxDirPath.Text = _projectDir;
+        }
+
+        private void listPresetsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+            LoadCheckedListPresetFiles(listPresets.SelectedIndex);
+        }
+
+        private void createBtn_Click(object sender, EventArgs e)
         {
             if (_projectDir != "")
             {
@@ -90,8 +142,8 @@ namespace Initializer
                 {
                     if (item == ".editorconfig")
                     {
-                        string editorconfig = @"resources\files\.editorconfig";
-                        string sourceFile = Path.Combine(Environment.CurrentDirectory, editorconfig);
+                        const string editorConfig = @"resources\files\.editorconfig";
+                        string sourceFile = Path.Combine(Environment.CurrentDirectory, editorConfig);
                         string destinationFile = _projectDir + "\\.editorconfig";
                         try
                         {
@@ -153,42 +205,44 @@ namespace Initializer
                 }
 
                 _audioService.PlaySuccess();
-                MessageBox.Show("Успешно выполнено!");
+                MessageBox.Show(LangService.Translate("success"));
             }
             else
             {
                 _audioService.PlayError();
-                MessageBox.Show("Выберите папку!");
+                MessageBox.Show(LangService.Translate("choose_folder"));
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void langComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            folderBrowserDialogDirPath.ShowDialog();
-            _projectDir = folderBrowserDialogDirPath.SelectedPath;
-            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
-            textBoxDirPath.Text = _projectDir;
+            LangService.Lang = langComboBox.SelectedItem.ToString();
+            selectFolderBtn.Text = LangService.Translate("select_folder_btn");
+            createBtn.Text = LangService.Translate("create_btn");
+            openInExplorerButton.Text = LangService.Translate("open_in_explorer");
+            if (_firstLoadConfig)
+            {
+                _firstLoadConfig = false;
+            }
+            else
+            {
+                _config.Lang = langComboBox.SelectedItem.ToString();
+                _configReaderWriter.SaveConfig(_config);
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void openInExplorerButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
-            LoadCheckedListPresetFiles(listPresets.SelectedIndex);
+            if (_projectDir != "")
+            {
+                Process.Start(_projectDir);
+            }
+            else
+            {
+                openInExplorerButton.Enabled = false;
+                _audioService.PlayError();
+                MessageBox.Show(LangService.Translate("choose_folder"));
+            }
         }
     }
 }

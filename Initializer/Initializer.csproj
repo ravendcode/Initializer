@@ -75,6 +75,7 @@
     <Compile Include="Errors\ConfigFileNotFoundException.cs" />
     <Compile Include="Errors\ConfigFileSerializationException.cs" />
     <Compile Include="Errors\CopyFileFromResourceException.cs" />
+    <Compile Include="Models\Config.cs" />
     <Compile Include="Services\AudioService.cs" />
     <Compile Include="Services\IAudioService.cs" />
     <Compile Include="PresetsViewModel.cs">
@@ -83,12 +84,13 @@
     <Compile Include="PresetsViewModel.Designer.cs">
       <DependentUpon>PresetsViewModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\IConfigReader.cs" />
-    <Compile Include="Data\JsonConfigReader.cs" />
+    <Compile Include="Data\IConfigReaderWriter.cs" />
+    <Compile Include="Data\JsonConfigReaderWriter.cs" />
     <Compile Include="Models\Option.cs" />
     <Compile Include="Models\Preset.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LangService.cs" />
     <EmbeddedResource Include="PresetsViewModel.resx">
       <DependentUpon>PresetsViewModel.cs</DependentUpon>
     </EmbeddedResource>

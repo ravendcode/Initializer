@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Initializer.Data
 {
-    public interface IConfigReader
+    public interface IConfigReaderWriter
     {
-        IEnumerable<Preset> GetPresets();
+        //IEnumerable<Preset> GetPresets();
+        Config GetConfig();
+        void SaveConfig(Config config);
     }
 }

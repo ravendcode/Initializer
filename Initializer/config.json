@@ -1,136 +1,139 @@
-[
+{
+  "lang": "en",
+  "presets": [
     {
-        "name": "UE",
-        "assetsDir": "Content",
-        "files": [
-            {
-                "dirname": "Audio",
-                "isSelected": true
-            },
-            {
-                "dirname": "Blueprints",
-                "isSelected": true
-            },
-            {
-                "dirname": "Characters",
-                "isSelected": true
-            },
-            {
-                "dirname": "Maps",
-                "isSelected": true
-            },
-            {
-                "dirname": "Materials",
-                "isSelected": true
-            },
-            {
-                "dirname": "Meshes",
-                "isSelected": true
-            },
-            {
-                "dirname": "Sprites",
-                "isSelected": false
-            },
-            {
-                "dirname": "Textures",
-                "isSelected": true
-            },
-            {
-                "dirname": ".editorconfig",
-                "isSelected": true
-            }
-        ]
+      "name": "UE",
+      "assetsDir": "Content",
+      "files": [
+        {
+          "dirname": "Audio",
+          "isSelected": true
+        },
+        {
+          "dirname": "Blueprints",
+          "isSelected": true
+        },
+        {
+          "dirname": "Characters",
+          "isSelected": true
+        },
+        {
+          "dirname": "Maps",
+          "isSelected": true
+        },
+        {
+          "dirname": "Materials",
+          "isSelected": true
+        },
+        {
+          "dirname": "Meshes",
+          "isSelected": true
+        },
+        {
+          "dirname": "Sprites",
+          "isSelected": false
+        },
+        {
+          "dirname": "Textures",
+          "isSelected": true
+        },
+        {
+          "dirname": ".editorconfig",
+          "isSelected": true
+        }
+      ]
     },
     {
-        "name": "Unity 2D",
-        "assetsDir": "Assets",
-        "files": [
-            {
-                "dirname": "Animations",
-                "isSelected": true
-            },
-            {
-                "dirname": "Audio",
-                "isSelected": true
-            },
-            {
-                "dirname": "Materials",
-                "isSelected": true
-            },
-            {
-                "dirname": "Meshes",
-                "isSelected": false
-            },
-            {
-                "dirname": "Prefabs",
-                "isSelected": true
-            },
-            {
-                "dirname": "Scripts",
-                "isSelected": true
-            },
-            {
-                "dirname": "Sprites",
-                "isSelected": true
-            },
-            {
-                "dirname": "Textures",
-                "isSelected": false
-            },
-            {
-                "dirname": "ScriptTemplates",
-                "isSelected": true
-            },
-            {
-                "dirname": ".editorconfig",
-                "isSelected": true
-            }
-        ]
+      "name": "Unity 2D",
+      "assetsDir": "Assets",
+      "files": [
+        {
+          "dirname": "Animations",
+          "isSelected": true
+        },
+        {
+          "dirname": "Audio",
+          "isSelected": true
+        },
+        {
+          "dirname": "Materials",
+          "isSelected": true
+        },
+        {
+          "dirname": "Meshes",
+          "isSelected": false
+        },
+        {
+          "dirname": "Prefabs",
+          "isSelected": true
+        },
+        {
+          "dirname": "Scripts",
+          "isSelected": true
+        },
+        {
+          "dirname": "Sprites",
+          "isSelected": true
+        },
+        {
+          "dirname": "Textures",
+          "isSelected": false
+        },
+        {
+          "dirname": "ScriptTemplates",
+          "isSelected": true
+        },
+        {
+          "dirname": ".editorconfig",
+          "isSelected": true
+        }
+      ]
     },
     {
-        "name": "Unity 3D",
-        "assetsDir": "Assets",
-        "files": [
-            {
-                "dirname": "Animations",
-                "isSelected": true
-            },
-            {
-                "dirname": "Audio",
-                "isSelected": true
-            },
-            {
-                "dirname": "Materials",
-                "isSelected": true
-            },
-            {
-                "dirname": "Meshes",
-                "isSelected": true
-            },
-            {
-                "dirname": "Prefabs",
-                "isSelected": true
-            },
-            {
-                "dirname": "Scripts",
-                "isSelected": true
-            },
-            {
-                "dirname": "Sprites",
-                "isSelected": false
-            },
-            {
-                "dirname": "Textures",
-                "isSelected": true
-            },
-            {
-                "dirname": "ScriptTemplates",
-                "isSelected": true
-            },
-            {
-                "dirname": ".editorconfig",
-                "isSelected": true
-            }
-        ]
+      "name": "Unity 3D",
+      "assetsDir": "Assets",
+      "files": [
+        {
+          "dirname": "Animations",
+          "isSelected": true
+        },
+        {
+          "dirname": "Audio",
+          "isSelected": true
+        },
+        {
+          "dirname": "Materials",
+          "isSelected": true
+        },
+        {
+          "dirname": "Meshes",
+          "isSelected": true
+        },
+        {
+          "dirname": "Prefabs",
+          "isSelected": true
+        },
+        {
+          "dirname": "Scripts",
+          "isSelected": true
+        },
+        {
+          "dirname": "Sprites",
+          "isSelected": false
+        },
+        {
+          "dirname": "Textures",
+          "isSelected": true
+        },
+        {
+          "dirname": "ScriptTemplates",
+          "isSelected": true
+        },
+        {
+          "dirname": ".editorconfig",
+          "isSelected": true
+        }
+      ]
     }
-]
+  ]
+}
