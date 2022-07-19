@@ -52,9 +52,9 @@ namespace Initializer
 
         private void LoadLanguages()
         {
-            langComboBox.Items.Add("Ru");
             langComboBox.Items.Add("En");
-            langComboBox.SelectedIndex = 1;
+            langComboBox.Items.Add("Ru");
+            langComboBox.SelectedIndex = 0;
         }
 
         private void LoadConfig()
@@ -62,7 +62,7 @@ namespace Initializer
             try
             {
                 _config = _configReaderWriter.GetConfig();
-                langComboBox.SelectedIndex = _config.Lang.ToLower() == "ru" ? 0 : 1;
+                langComboBox.SelectedIndex = _config.Lang.ToLower() == "en" ? 0 : 1;
             }
             catch (ConfigFileNotFoundException e)
             {
