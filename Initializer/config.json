@@ -56,6 +56,14 @@
           "isSelected": true
         },
         {
+          "dirname": "FX",
+          "isSelected": true
+        },
+        {
+          "dirname": "InputActions",
+          "isSelected": true
+        },
+        {
           "dirname": "Materials",
           "isSelected": true
         },
@@ -99,6 +107,14 @@
         },
         {
           "dirname": "Audio",
+          "isSelected": true
+        },
+        {
+          "dirname": "FX",
+          "isSelected": true
+        },
+        {
+          "dirname": "InputActions",
           "isSelected": true
         },
         {
