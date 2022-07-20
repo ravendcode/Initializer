@@ -18,6 +18,10 @@
           "isSelected": true
         },
         {
+          "dirname": "FX",
+          "isSelected": true
+        },
+        {
           "dirname": "Maps",
           "isSelected": true
         },
