@@ -129,6 +129,7 @@
             this.Name = "PresetsViewModel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Initializer";
+            this.Load += new System.EventHandler(this.PresetsViewModel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

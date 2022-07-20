@@ -120,6 +120,7 @@ namespace Initializer
         {
             folderBrowserDialogDirPath.ShowDialog();
             _projectDir = folderBrowserDialogDirPath.SelectedPath;
+            if (_projectDir == "") return;
             _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
             textBoxDirPath.Text = _projectDir;
             openInExplorerBtn.Enabled = true;
@@ -232,6 +233,11 @@ namespace Initializer
             {
                 Process.Start(_projectDir);
             }
+        }
+
+        private void PresetsViewModel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
