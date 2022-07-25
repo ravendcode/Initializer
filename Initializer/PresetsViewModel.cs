@@ -118,13 +118,14 @@ namespace Initializer
 
         private void selectFolderBtn_Click(object sender, EventArgs e)
         {
-            folderBrowserDialogDirPath.ShowDialog();
-            _projectDir = folderBrowserDialogDirPath.SelectedPath;
-            if (_projectDir == "") return;
-            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
-            textBoxDirPath.Text = _projectDir;
-            openInExplorerBtn.Enabled = true;
-            createBtn.Enabled = true;
+            if (folderBrowserDialogDirPath.ShowDialog() == DialogResult.OK)
+            {
+                _projectDir = folderBrowserDialogDirPath.SelectedPath;
+                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+                textBoxDirPath.Text = _projectDir;
+                openInExplorerBtn.Enabled = true;
+                createBtn.Enabled = true;
+            }
         }
 
         private void listPresetsBox_SelectedIndexChanged(object sender, EventArgs e)
