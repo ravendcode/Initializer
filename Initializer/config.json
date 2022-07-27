@@ -18,7 +18,7 @@
           "isSelected": true
         },
         {
-          "dirname": "FX",
+          "dirname": "VFX",
           "isSelected": true
         },
         {
@@ -60,11 +60,11 @@
           "isSelected": true
         },
         {
-          "dirname": "FX",
+          "dirname": "VFX",
           "isSelected": true
         },
         {
-          "dirname": "Controls",
+          "dirname": "Settings/Controls",
           "isSelected": true
         },
         {
@@ -114,11 +114,11 @@
           "isSelected": true
         },
         {
-          "dirname": "FX",
+          "dirname": "VFX",
           "isSelected": true
         },
         {
-          "dirname": "Controls",
+          "dirname": "Settings/Controls",
           "isSelected": true
         },
         {
