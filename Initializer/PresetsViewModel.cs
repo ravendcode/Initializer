@@ -41,7 +41,6 @@ namespace Initializer
             _audioService = audioService;
 
             LoadLanguages();
-
             LoadConfig();
             LoadPresets();
             LoadListPresets();
@@ -63,6 +62,7 @@ namespace Initializer
             {
                 _config = _configReaderWriter.GetConfig();
                 langComboBox.SelectedIndex = _config.Lang.ToLower() == "en" ? 0 : 1;
+                addProjectNameFolderCheckBox.Checked = _config.AddProjectNameFolder;
             }
             catch (ConfigFileNotFoundException e)
             {
@@ -121,7 +121,15 @@ namespace Initializer
             if (folderBrowserDialogDirPath.ShowDialog() == DialogResult.OK)
             {
                 _projectDir = folderBrowserDialogDirPath.SelectedPath;
-                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+                if (addProjectNameFolderCheckBox.Checked)
+                {
+                    _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir + "\\" +
+                        Path.GetFileName(_projectDir);
+                }
+                else
+                {
+                    _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+                }
                 textBoxDirPath.Text = _projectDir;
                 openInExplorerBtn.Enabled = true;
                 createBtn.Enabled = true;
@@ -217,6 +225,8 @@ namespace Initializer
             selectFolderBtn.Text = LangService.Translate("select_folder_btn");
             createBtn.Text = LangService.Translate("create_btn");
             openInExplorerBtn.Text = LangService.Translate("open_in_explorer");
+            addProjectNameFolderCheckBox.Text = LangService.Translate("add_project_name_folder");
+
             if (_firstLoadConfig)
             {
                 _firstLoadConfig = false;
@@ -238,6 +248,13 @@ namespace Initializer
 
         private void PresetsViewModel_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void addProjectNameFolderCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _config.AddProjectNameFolder = addProjectNameFolderCheckBox.Checked;
+            _configReaderWriter.SaveConfig(_config);
 
         }
     }

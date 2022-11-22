@@ -24,7 +24,9 @@ namespace Initializer.Services
             ["en.open_in_explorer"] = "Open in explorer",
             ["ru.open_in_explorer"] = "Открыть в проводнике",
             ["en.create_btn"] = "Create",
-            ["ru.create_btn"] = "Создать"
+            ["ru.create_btn"] = "Создать",
+            ["en.add_project_name_folder"] = "Add folder with project name",
+            ["ru.add_project_name_folder"] = "Добавить папку с названием проекта"
         };
 
         public static string Translate(string key)

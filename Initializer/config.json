@@ -1,5 +1,6 @@
 {
   "lang": "en",
+  "addProjectNameFolder": true,
   "presets": [
     {
       "name": "UE",

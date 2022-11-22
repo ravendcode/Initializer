@@ -14,7 +14,7 @@ namespace Initializer.Models
             get => _lang;
             set => _lang = value.ToLower();
         }
-
+        public bool AddProjectNameFolder { get; set; }
         public List<Preset> Presets { get; set; }
     }
 }
