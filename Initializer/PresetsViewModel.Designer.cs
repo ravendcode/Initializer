@@ -41,7 +41,7 @@
             // 
             // createBtn
             // 
-            this.createBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createBtn.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.createBtn.Location = new System.Drawing.Point(51, 547);
             this.createBtn.Name = "createBtn";
             this.createBtn.Size = new System.Drawing.Size(246, 52);
@@ -54,7 +54,7 @@
             // 
             this.textBoxDirPath.Enabled = false;
             this.textBoxDirPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxDirPath.Location = new System.Drawing.Point(51, 117);
+            this.textBoxDirPath.Location = new System.Drawing.Point(51, 94);
             this.textBoxDirPath.Name = "textBoxDirPath";
             this.textBoxDirPath.ReadOnly = true;
             this.textBoxDirPath.Size = new System.Drawing.Size(739, 29);
@@ -63,8 +63,8 @@
             // 
             // selectFolderBtn
             // 
-            this.selectFolderBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.selectFolderBtn.Location = new System.Drawing.Point(51, 65);
+            this.selectFolderBtn.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.selectFolderBtn.Location = new System.Drawing.Point(51, 40);
             this.selectFolderBtn.Name = "selectFolderBtn";
             this.selectFolderBtn.Size = new System.Drawing.Size(220, 37);
             this.selectFolderBtn.TabIndex = 3;
@@ -84,21 +84,21 @@
             // 
             // listPresets
             // 
-            this.listPresets.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listPresets.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listPresets.FormattingEnabled = true;
-            this.listPresets.ItemHeight = 20;
+            this.listPresets.ItemHeight = 22;
             this.listPresets.Location = new System.Drawing.Point(51, 243);
             this.listPresets.Name = "listPresets";
-            this.listPresets.Size = new System.Drawing.Size(246, 284);
+            this.listPresets.Size = new System.Drawing.Size(246, 268);
             this.listPresets.TabIndex = 6;
             this.listPresets.SelectedIndexChanged += new System.EventHandler(this.listPresetsBox_SelectedIndexChanged);
             // 
             // langComboBox
             // 
-            this.langComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.langComboBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.langComboBox.FormattingEnabled = true;
             this.langComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.langComboBox.Location = new System.Drawing.Point(719, 31);
+            this.langComboBox.Location = new System.Drawing.Point(719, 40);
             this.langComboBox.Name = "langComboBox";
             this.langComboBox.Size = new System.Drawing.Size(71, 25);
             this.langComboBox.TabIndex = 8;
@@ -106,7 +106,7 @@
             // 
             // openInExplorerBtn
             // 
-            this.openInExplorerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openInExplorerBtn.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.openInExplorerBtn.Location = new System.Drawing.Point(51, 163);
             this.openInExplorerBtn.Name = "openInExplorerBtn";
             this.openInExplorerBtn.Size = new System.Drawing.Size(246, 61);
@@ -122,7 +122,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.addProjectNameFolderCheckBox.AutoSize = true;
             this.addProjectNameFolderCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addProjectNameFolderCheckBox.Location = new System.Drawing.Point(51, 31);
+            this.addProjectNameFolderCheckBox.Location = new System.Drawing.Point(51, 129);
             this.addProjectNameFolderCheckBox.Name = "addProjectNameFolderCheckBox";
             this.addProjectNameFolderCheckBox.Size = new System.Drawing.Size(369, 28);
             this.addProjectNameFolderCheckBox.TabIndex = 10;
