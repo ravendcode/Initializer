@@ -121,15 +121,7 @@ namespace Initializer
             if (folderBrowserDialogDirPath.ShowDialog() == DialogResult.OK)
             {
                 _projectDir = folderBrowserDialogDirPath.SelectedPath;
-                if (addProjectNameFolderCheckBox.Checked)
-                {
-                    _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir + "\\" +
-                        Path.GetFileName(_projectDir);
-                }
-                else
-                {
-                    _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
-                }
+                GenerateAssetsDir();
                 textBoxDirPath.Text = _projectDir;
                 openInExplorerBtn.Enabled = true;
                 createBtn.Enabled = true;
@@ -255,7 +247,23 @@ namespace Initializer
         {
             _config.AddProjectNameFolder = addProjectNameFolderCheckBox.Checked;
             _configReaderWriter.SaveConfig(_config);
+            if (!string.IsNullOrEmpty(_assetsDir))
+            {
+                GenerateAssetsDir();
+            }
+        }
 
+        private void GenerateAssetsDir()
+        {
+            if (addProjectNameFolderCheckBox.Checked)
+            {
+                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir + "\\" +
+                    Path.GetFileName(_projectDir);
+            }
+            else
+            {
+                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+            }
         }
     }
 }
