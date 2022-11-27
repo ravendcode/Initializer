@@ -31,9 +31,6 @@ namespace Initializer
         //private string _presetName = "";
         private string _assetsDir = "";
 
-        private string _subAssetsDir = "";
-
-
         private bool _firstLoadConfig = true;
 
         public PresetsViewModel(IConfigReaderWriter configReaderWriter, IAudioService audioService)
@@ -124,7 +121,7 @@ namespace Initializer
             if (folderBrowserDialogDirPath.ShowDialog() == DialogResult.OK)
             {
                 _projectDir = folderBrowserDialogDirPath.SelectedPath;
-                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+
                 GenerateSubAssetsDir();
                 textBoxDirPath.Text = _projectDir;
                 openInExplorerBtn.Enabled = true;
@@ -134,7 +131,9 @@ namespace Initializer
 
         private void listPresetsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+            if (_projectDir != "")
+                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+
             LoadCheckedListPresetFiles(listPresets.SelectedIndex);
         }
 
@@ -142,15 +141,7 @@ namespace Initializer
         {
             if (_projectDir != "")
             {
-                //DirectoryInfo dirInfo = new DirectoryInfo(_assetsDir);
-                DirectoryInfo assetsDirInfo;
-                if (addProjectNameFolderCheckBox.Checked)
-                {
-                    assetsDirInfo = new DirectoryInfo(_subAssetsDir);
-                } else
-                {
-                    assetsDirInfo = new DirectoryInfo(_assetsDir);
-                }
+                DirectoryInfo assetsDirInfo = new DirectoryInfo(_assetsDir);
 
                 foreach (string item in checkedListPresetFiles.CheckedItems)
                 {
@@ -178,13 +169,11 @@ namespace Initializer
 
                         try
                         {
-                            //File.Copy(sourceFile, destinationFile, true);
                             if (addProjectNameFolderCheckBox.Checked)
                             {
-                                //string assetsPath = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
-                                DirectoryInfo scriptTemplatesDirInfo = new DirectoryInfo(_assetsDir);
-                                scriptTemplatesDirInfo.CreateSubdirectory(item);
-                                File.Copy(sourceFile, _assetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt", true);
+                                DirectoryInfo assetsDirInfoForScriptTemplates = new DirectoryInfo(_projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir);
+                                assetsDirInfoForScriptTemplates.CreateSubdirectory(item);
+                                File.Copy(sourceFile, _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt", true);
                             }
                             else
                             {
@@ -273,7 +262,7 @@ namespace Initializer
             _config.AddProjectNameFolder = addProjectNameFolderCheckBox.Checked;
             _configReaderWriter.SaveConfig(_config);
 
-            if (!string.IsNullOrEmpty(_subAssetsDir))
+            if (!string.IsNullOrEmpty(_assetsDir))
             {
                 GenerateSubAssetsDir();
             }
@@ -281,14 +270,15 @@ namespace Initializer
 
         private void GenerateSubAssetsDir()
         {
+            _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
             if (addProjectNameFolderCheckBox.Checked)
             {
-                _subAssetsDir = _assetsDir + "\\" +
-                    Path.GetFileName(_projectDir);
-            }
-            else
-            {
-                _subAssetsDir = "";
+                string camelCaseProjectName = "";
+                foreach (var item in Path.GetFileName(_projectDir).Split())
+                {
+                    camelCaseProjectName += char.ToUpper(item[0]) + item.Substring(1);
+                }
+                _assetsDir = _assetsDir + "\\" + camelCaseProjectName;
             }
         }
     }
