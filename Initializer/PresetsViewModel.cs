@@ -31,6 +31,9 @@ namespace Initializer
         //private string _presetName = "";
         private string _assetsDir = "";
 
+        private string _subAssetsDir = "";
+
+
         private bool _firstLoadConfig = true;
 
         public PresetsViewModel(IConfigReaderWriter configReaderWriter, IAudioService audioService)
@@ -121,7 +124,8 @@ namespace Initializer
             if (folderBrowserDialogDirPath.ShowDialog() == DialogResult.OK)
             {
                 _projectDir = folderBrowserDialogDirPath.SelectedPath;
-                GenerateAssetsDir();
+                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+                GenerateSubAssetsDir();
                 textBoxDirPath.Text = _projectDir;
                 openInExplorerBtn.Enabled = true;
                 createBtn.Enabled = true;
@@ -138,7 +142,15 @@ namespace Initializer
         {
             if (_projectDir != "")
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(_assetsDir);
+                //DirectoryInfo dirInfo = new DirectoryInfo(_assetsDir);
+                DirectoryInfo assetsDirInfo;
+                if (addProjectNameFolderCheckBox.Checked)
+                {
+                    assetsDirInfo = new DirectoryInfo(_subAssetsDir);
+                } else
+                {
+                    assetsDirInfo = new DirectoryInfo(_assetsDir);
+                }
 
                 foreach (string item in checkedListPresetFiles.CheckedItems)
                 {
@@ -158,16 +170,27 @@ namespace Initializer
                         continue;
                     }
 
-                    dirInfo.CreateSubdirectory(item);
-
                     if (item == "ScriptTemplates")
                     {
                         string newBehaviourScript = @"resources\files\81-C# Script-NewBehaviourScript.cs.txt";
                         string sourceFile = Path.Combine(Environment.CurrentDirectory, newBehaviourScript);
                         string destinationFile = _assetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt";
+
                         try
                         {
-                            File.Copy(sourceFile, destinationFile, true);
+                            //File.Copy(sourceFile, destinationFile, true);
+                            if (addProjectNameFolderCheckBox.Checked)
+                            {
+                                //string assetsPath = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+                                DirectoryInfo scriptTemplatesDirInfo = new DirectoryInfo(_assetsDir);
+                                scriptTemplatesDirInfo.CreateSubdirectory(item);
+                                File.Copy(sourceFile, _assetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt", true);
+                            }
+                            else
+                            {
+                                assetsDirInfo.CreateSubdirectory(item);
+                                File.Copy(sourceFile, destinationFile, true);
+                            }
                         }
                         catch (IOException copyError)
                         {
@@ -175,6 +198,8 @@ namespace Initializer
                         }
                         continue;
                     }
+
+                    assetsDirInfo.CreateSubdirectory(item);
 
                     //                    if (item == "ScriptTemplates")
                     //                    {
@@ -247,22 +272,23 @@ namespace Initializer
         {
             _config.AddProjectNameFolder = addProjectNameFolderCheckBox.Checked;
             _configReaderWriter.SaveConfig(_config);
-            if (!string.IsNullOrEmpty(_assetsDir))
+
+            if (!string.IsNullOrEmpty(_subAssetsDir))
             {
-                GenerateAssetsDir();
+                GenerateSubAssetsDir();
             }
         }
 
-        private void GenerateAssetsDir()
+        private void GenerateSubAssetsDir()
         {
             if (addProjectNameFolderCheckBox.Checked)
             {
-                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir + "\\" +
+                _subAssetsDir = _assetsDir + "\\" +
                     Path.GetFileName(_projectDir);
             }
             else
             {
-                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+                _subAssetsDir = "";
             }
         }
     }
