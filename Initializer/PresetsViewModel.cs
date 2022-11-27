@@ -131,9 +131,10 @@ namespace Initializer
 
         private void listPresetsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_projectDir != "")
-                _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
-
+            if (!string.IsNullOrEmpty(_assetsDir))
+            {
+                GenerateSubAssetsDir();
+            }
             LoadCheckedListPresetFiles(listPresets.SelectedIndex);
         }
 
@@ -171,9 +172,10 @@ namespace Initializer
                         {
                             if (addProjectNameFolderCheckBox.Checked)
                             {
-                                DirectoryInfo assetsDirInfoForScriptTemplates = new DirectoryInfo(_projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir);
+                                string mainAssetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
+                                DirectoryInfo assetsDirInfoForScriptTemplates = new DirectoryInfo(mainAssetsDir);
                                 assetsDirInfoForScriptTemplates.CreateSubdirectory(item);
-                                File.Copy(sourceFile, _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt", true);
+                                File.Copy(sourceFile, mainAssetsDir + "\\ScriptTemplates\\81-C# Script-NewBehaviourScript.cs.txt", true);
                             }
                             else
                             {
