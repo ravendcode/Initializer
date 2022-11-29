@@ -31,7 +31,7 @@ namespace Initializer
         //private string _presetName = "";
         private string _assetsDir = "";
 
-        private bool _firstLoadConfig = true;
+        private bool _isFirstLoadConfig = true;
 
         public PresetsViewModel(IConfigReaderWriter configReaderWriter, IAudioService audioService)
         {
@@ -235,9 +235,9 @@ namespace Initializer
             openInExplorerBtn.Text = LangService.Translate("open_in_explorer");
             addProjectNameFolderCheckBox.Text = LangService.Translate("add_project_name_folder");
 
-            if (_firstLoadConfig)
+            if (_isFirstLoadConfig)
             {
-                _firstLoadConfig = false;
+                _isFirstLoadConfig = false;
             }
             else
             {
@@ -275,12 +275,12 @@ namespace Initializer
             _assetsDir = _projectDir + "\\" + _presets[listPresets.SelectedIndex].AssetsDir;
             if (addProjectNameFolderCheckBox.Checked)
             {
-                string camelCaseProjectName = "";
+                string pascalCaseProjectName = "";
                 foreach (var item in Path.GetFileName(_projectDir).Split())
                 {
-                    camelCaseProjectName += char.ToUpper(item[0]) + item.Substring(1);
+                    pascalCaseProjectName += char.ToUpper(item[0]) + item.Substring(1);
                 }
-                _assetsDir = _assetsDir + "\\" + camelCaseProjectName;
+                _assetsDir = _assetsDir + "\\" + pascalCaseProjectName;
             }
         }
     }
