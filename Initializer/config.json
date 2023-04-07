@@ -1,17 +1,41 @@
 {
-  "lang": "en",
-  "addProjectNameFolder": false,
+  "lang": "ru",
+  "addProjectNameFolder": true,
   "presets": [
     {
       "name": "UE",
       "assetsDir": "Content",
       "files": [
         {
-          "dirname": "Audio",
+          "dirname": "Art/Nature/Ambient",
           "isSelected": true
         },
         {
-          "dirname": "Blueprints",
+          "dirname": "Art/Nature/Foliage",
+          "isSelected": true
+        },
+        {
+          "dirname": "Art/Nature/Rocks",
+          "isSelected": true
+        },
+        {
+          "dirname": "Art/Nature/Trees",
+          "isSelected": true
+        },
+        {
+          "dirname": "Art/Props",
+          "isSelected": true
+        },
+        {
+          "dirname": "Art/UI",
+          "isSelected": true
+        },
+        {
+          "dirname": "Audio/Music",
+          "isSelected": true
+        },
+        {
+          "dirname": "Audio/SFX",
           "isSelected": true
         },
         {
@@ -19,7 +43,11 @@
           "isSelected": true
         },
         {
-          "dirname": "VFX",
+          "dirname": "Core",
+          "isSelected": true
+        },
+        {
+          "dirname": "Input",
           "isSelected": true
         },
         {
@@ -27,19 +55,7 @@
           "isSelected": true
         },
         {
-          "dirname": "Materials",
-          "isSelected": true
-        },
-        {
-          "dirname": "Meshes",
-          "isSelected": true
-        },
-        {
-          "dirname": "Sprites",
-          "isSelected": false
-        },
-        {
-          "dirname": "Textures",
+          "dirname": "VFX",
           "isSelected": true
         },
         {
@@ -49,35 +65,43 @@
       ]
     },
     {
-      "name": "Unity 2D",
+      "name": "Unity",
       "assetsDir": "Assets",
       "files": [
         {
-          "dirname": "Animations",
+          "dirname": "Art/Nature/Ambient",
           "isSelected": true
         },
         {
-          "dirname": "Audio",
+          "dirname": "Art/Nature/Foliage",
           "isSelected": true
         },
         {
-          "dirname": "VFX",
+          "dirname": "Art/Nature/Rocks",
           "isSelected": true
         },
         {
-          "dirname": "Settings/Controls",
+          "dirname": "Art/Nature/Trees",
           "isSelected": true
         },
         {
-          "dirname": "Materials",
+          "dirname": "Art/Props",
           "isSelected": true
         },
         {
-          "dirname": "Meshes",
-          "isSelected": false
+          "dirname": "Art/UI",
+          "isSelected": true
         },
         {
-          "dirname": "Prefabs",
+          "dirname": "Audio/Music",
+          "isSelected": true
+        },
+        {
+          "dirname": "Audio/SFX",
+          "isSelected": true
+        },
+        {
+          "dirname": "Characters",
           "isSelected": true
         },
         {
@@ -85,69 +109,19 @@
           "isSelected": true
         },
         {
-          "dirname": "Sprites",
-          "isSelected": true
-        },
-        {
-          "dirname": "Textures",
-          "isSelected": false
-        },
-        {
           "dirname": "ScriptTemplates",
           "isSelected": true
         },
         {
-          "dirname": ".editorconfig",
-          "isSelected": true
-        }
-      ]
-    },
-    {
-      "name": "Unity 3D",
-      "assetsDir": "Assets",
-      "files": [
-        {
-          "dirname": "Animations",
+          "dirname": "Settings/Input",
           "isSelected": true
         },
         {
-          "dirname": "Audio",
+          "dirname": "Settings/Presets",
           "isSelected": true
         },
         {
           "dirname": "VFX",
-          "isSelected": true
-        },
-        {
-          "dirname": "Settings/Controls",
-          "isSelected": true
-        },
-        {
-          "dirname": "Materials",
-          "isSelected": true
-        },
-        {
-          "dirname": "Meshes",
-          "isSelected": true
-        },
-        {
-          "dirname": "Prefabs",
-          "isSelected": true
-        },
-        {
-          "dirname": "Scripts",
-          "isSelected": true
-        },
-        {
-          "dirname": "Sprites",
-          "isSelected": false
-        },
-        {
-          "dirname": "Textures",
-          "isSelected": true
-        },
-        {
-          "dirname": "ScriptTemplates",
           "isSelected": true
         },
         {
